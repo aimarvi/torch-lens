@@ -1,1160 +1,1059 @@
 // Computational graph for the feedforward sweep
-digraph LRMNet {
-	graph [label=<<B>LRMNet</B><br align='left'/>187 tensors total (70.9 MB)<br align='left'/>67108690 params total (256.0 MB)<br align='left'/>> labeljust=left labelloc=t ordering=out rankdir=BT]
+digraph RectifiedLpJEPA {
+	graph [label=<<B>RectifiedLpJEPA</B><br align='left'/>139 tensors total (37.8 MB)<br align='left'/>11966528 params total (45.7 MB)<br align='left'/>> labeljust=left labelloc=t ordering=out rankdir=BT]
 	node [ordering=out]
 	input_1 [label=<<b>input_1</b><br/>1x3x224x224 (588.2 KB)<br/>@input.x> color=black fillcolor="#98FB98" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	input_1 -> conv2d_1_1pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	input_1 -> conv2d_1_1pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	conv2d_1_1pass1 [label=<<b>conv2d_1_1:1</b><br/>1x64x55x55 (756.4 KB)<br/>params: 64x3x11x11, x64<br/>@feedforward.features.0:1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_1_2pass1 [label=<<b>relu_1_2:1</b><br/>1x64x55x55 (756.4 KB)<br/>@feedforward.features.1:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	maxpool2d_1_3pass1 [label=<<b>maxpool2d_1_3:1</b><br/>1x64x27x27 (182.4 KB)<br/>@feedforward.features.2:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_2_4pass1 [label=<<b>conv2d_2_4:1</b><br/>1x192x27x27 (546.9 KB)<br/>params: 192x64x5x5, x192<br/>@feedforward.features.3:1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_2_5pass1 [label=<<b>relu_2_5:1</b><br/>1x192x27x27 (546.9 KB)<br/>@feedforward.features.4:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	maxpool2d_2_6pass1 [label=<<b>maxpool2d_2_6:1</b><br/>1x192x13x13 (126.9 KB)<br/>@feedforward.features.5:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_3_7pass1 [label=<<b>conv2d_3_7:1</b><br/>1x384x13x13 (253.7 KB)<br/>params: 384x192x3x3, x384<br/>@feedforward.features.6:1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_3_8pass1 [label=<<b>relu_3_8:1</b><br/>1x384x13x13 (253.7 KB)<br/>@feedforward.features.7:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_4_9pass1 [label=<<b>conv2d_4_9:1</b><br/>1x256x13x13 (169.2 KB)<br/>params: 256x384x3x3, x256<br/>@feedforward.features.8:1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_4_10pass1 [label=<<b>relu_4_10:1</b><br/>1x256x13x13 (169.2 KB)<br/>@feedforward.features.9:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_5_11pass1 [label=<<b>conv2d_5_11:1</b><br/>1x256x13x13 (169.2 KB)<br/>params: 256x256x3x3, x256<br/>@feedforward.features.10:1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_5_12pass1 [label=<<b>relu_5_12:1</b><br/>1x256x13x13 (169.2 KB)<br/>@feedforward.features.11:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	maxpool2d_3_13pass1 [label=<<b>maxpool2d_3_13:1</b><br/>1x256x6x6 (36.2 KB)<br/>@feedforward.features.12:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	adaptiveavgpool2d_1_14pass1 [label=<<b>adaptiveavgpool2d_1_14:1</b><br/>1x256x6x6 (36.2 KB)<br/>@feedforward.avgpool:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	flatten_1_15pass1 [label=<<b>flatten_1_15:1</b><br/>1x9216 (36.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	dropout_1_16pass1 [label=<<b>dropout_1_16:1</b><br/>1x9216 (36.1 KB)<br/>@feedforward.classifier.0:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	linear_1_17pass1 [label=<<b>linear_1_17:1</b><br/>1x4096 (16.1 KB)<br/>params: 4096x9216, x4096<br/>@feedforward.classifier.1:1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_6_18pass1 [label=<<b>relu_6_18:1</b><br/>1x4096 (16.1 KB)<br/>@feedforward.classifier.2:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	dropout_2_19pass1 [label=<<b>dropout_2_19:1</b><br/>1x4096 (16.1 KB)<br/>@feedforward.classifier.3:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	linear_2_20pass1 [label=<<b>linear_2_20:1</b><br/>1x4096 (16.1 KB)<br/>params: 4096x4096, x4096<br/>@feedforward.classifier.4:1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_7_21pass1 [label=<<b>relu_7_21:1</b><br/>1x4096 (16.1 KB)<br/>@feedforward.classifier.5:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	linear_3_22pass1 [label=<<b>linear_3_22:1</b><br/>1x1000 (4.0 KB)<br/>params: 1000x4096, x1000<br/>@feedforward.classifier.6:1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	linear_3_22pass1 -> layernorm_4_113 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	linear_3_22pass1 -> layernorm_5_139 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	linear_3_22pass1 -> output_1pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	conv2d_1_1pass2 [label=<<b>conv2d_1_1:2</b><br/>1x64x55x55 (756.4 KB)<br/>params: 64x3x11x11, x64<br/>@feedforward.features.0:2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_1_23 [label=<<b>identity_1_23</b><br/>1x64x55x55 (756.4 KB)<br/>@lrm.features_0_modulation.pre_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	zeroslike_1_24 [label=<<b>zeroslike_1_24</b><br/>1x64x55x55 (756.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	unsqueeze_1_25 [label=<<b>unsqueeze_1_25</b><br/>1x256x55x55 (3.0 MB)<br/>params: 256x55x55> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	interpolate_1_26 [label=<<b>interpolate_1_26</b><br/>1x256x13x13 (169.2 KB)<br/>params: 256x55x55> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	squeeze_1_27 [label=<<b>squeeze_1_27</b><br/>256x13x13 (169.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	unsqueeze_2_28 [label=<<b>unsqueeze_2_28</b><br/>1x256x55x55 (3.0 MB)<br/>params: 256x55x55> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	interpolate_2_29 [label=<<b>interpolate_2_29</b><br/>1x256x13x13 (169.2 KB)<br/>params: 256x55x55> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	squeeze_2_30 [label=<<b>squeeze_2_30</b><br/>256x13x13 (169.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	layernorm_1_31 [label=<<b>layernorm_1_31</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_1_32 [label=<<b>to_1_32</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	tanh_1_33 [label=<<b>tanh_1_33</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_0_modulation.from_features_9_to_features_0.rescale.squash> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	interpolate_3_34 [label=<<b>interpolate_3_34</b><br/>1x256x55x55 (3.0 MB)<br/>@lrm.features_0_modulation.from_features_9_to_features_0.rescale.interp> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	lt_1_35 [label=<<b>lt_1_35</b><br/>1x256x55x55 (756.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	ge_1_36 [label=<<b>ge_1_36</b><br/>1x256x55x55 (756.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_1_37 [label=<<b>float_1_37</b><br/>1x256x55x55 (3.0 MB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_1_38 [label=<<b>mul_1_38</b><br/>1x256x55x55 (3.0 MB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_2_39 [label=<<b>float_2_39</b><br/>1x256x55x55 (3.0 MB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_2_40 [label=<<b>mul_2_40</b><br/>1x256x55x55 (3.0 MB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_1_41 [label=<<b>add_1_41</b><br/>1x256x55x55 (3.0 MB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_3_42 [label=<<b>mul_3_42</b><br/>1x256x55x55 (3.0 MB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_2_43 [label=<<b>to_2_43</b><br/>1x256x55x55 (3.0 MB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	conv2d_6_44 [label=<<b>conv2d_6_44</b><br/>1x64x55x55 (756.4 KB)<br/>params: 64x256x1x1, x64<br/>@lrm.features_0_modulation.from_features_9_to_features_0.modulation> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_6_44 -> add_2_45 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	add_2_45 [label=<<b>add_2_45</b><br/>1x64x55x55 (756.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_2_46 [label=<<b>identity_2_46</b><br/>1x64x55x55 (756.4 KB)<br/>@lrm.features_0_modulation.total_mod:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_3_47 [label=<<b>identity_3_47</b><br/>1x64x55x55 (756.4 KB)<br/>@lrm.features_0_modulation.total_mod:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_4_48 [label=<<b>identity_4_48</b><br/>1x64x55x55 (756.4 KB)<br/>@lrm.features_0_modulation.total_mod:3> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_5_49 [label=<<b>identity_5_49</b><br/>1x64x55x55 (756.4 KB)<br/>@lrm.features_0_modulation.total_mod:4> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	mul_4_50 [label=<<b>mul_4_50</b><br/>1x64x55x55 (756.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_3_51 [label=<<b>add_3_51</b><br/>1x64x55x55 (756.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_6_52 [label=<<b>identity_6_52</b><br/>1x64x55x55 (756.4 KB)<br/>@lrm.features_0_modulation.post_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_8_53 [label=<<b>relu_8_53</b><br/>1x64x55x55 (756.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	relu_1_2pass2 [label=<<b>relu_1_2:2</b><br/>1x64x55x55 (756.4 KB)<br/>@feedforward.features.1:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	maxpool2d_1_3pass2 [label=<<b>maxpool2d_1_3:2</b><br/>1x64x27x27 (182.4 KB)<br/>@feedforward.features.2:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_2_4pass2 [label=<<b>conv2d_2_4:2</b><br/>1x192x27x27 (546.9 KB)<br/>params: 192x64x5x5, x192<br/>@feedforward.features.3:2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_7_54 [label=<<b>identity_7_54</b><br/>1x192x27x27 (546.9 KB)<br/>@lrm.features_3_modulation.pre_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	zeroslike_2_55 [label=<<b>zeroslike_2_55</b><br/>1x192x27x27 (546.9 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	unsqueeze_3_56 [label=<<b>unsqueeze_3_56</b><br/>1x256x27x27 (729.2 KB)<br/>params: 256x27x27> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	interpolate_4_57 [label=<<b>interpolate_4_57</b><br/>1x256x6x6 (36.2 KB)<br/>params: 256x27x27> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	squeeze_3_58 [label=<<b>squeeze_3_58</b><br/>256x6x6 (36.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	unsqueeze_4_59 [label=<<b>unsqueeze_4_59</b><br/>1x256x27x27 (729.2 KB)<br/>params: 256x27x27> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	interpolate_5_60 [label=<<b>interpolate_5_60</b><br/>1x256x6x6 (36.2 KB)<br/>params: 256x27x27> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	squeeze_4_61 [label=<<b>squeeze_4_61</b><br/>256x6x6 (36.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,dashed"]
-	layernorm_2_62 [label=<<b>layernorm_2_62</b><br/>1x256x6x6 (36.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_3_63 [label=<<b>to_3_63</b><br/>1x256x6x6 (36.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	tanh_2_64 [label=<<b>tanh_2_64</b><br/>1x256x6x6 (36.2 KB)<br/>@lrm.features_3_modulation.from_features_12_to_features_3.rescale.squash> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	interpolate_6_65 [label=<<b>interpolate_6_65</b><br/>1x256x27x27 (729.2 KB)<br/>@lrm.features_3_modulation.from_features_12_to_features_3.rescale.interp> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	lt_2_66 [label=<<b>lt_2_66</b><br/>1x256x27x27 (182.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	ge_2_67 [label=<<b>ge_2_67</b><br/>1x256x27x27 (182.4 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_3_68 [label=<<b>float_3_68</b><br/>1x256x27x27 (729.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_5_69 [label=<<b>mul_5_69</b><br/>1x256x27x27 (729.2 KB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_4_70 [label=<<b>float_4_70</b><br/>1x256x27x27 (729.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_6_71 [label=<<b>mul_6_71</b><br/>1x256x27x27 (729.2 KB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_4_72 [label=<<b>add_4_72</b><br/>1x256x27x27 (729.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_7_73 [label=<<b>mul_7_73</b><br/>1x256x27x27 (729.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_4_74 [label=<<b>to_4_74</b><br/>1x256x27x27 (729.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	conv2d_7_75 [label=<<b>conv2d_7_75</b><br/>1x192x27x27 (546.9 KB)<br/>params: 192x256x1x1, x192<br/>@lrm.features_3_modulation.from_features_12_to_features_3.modulation> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_7_75 -> add_5_76 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	add_5_76 [label=<<b>add_5_76</b><br/>1x192x27x27 (546.9 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_8_77 [label=<<b>identity_8_77</b><br/>1x192x27x27 (546.9 KB)<br/>@lrm.features_3_modulation.total_mod:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_9_78 [label=<<b>identity_9_78</b><br/>1x192x27x27 (546.9 KB)<br/>@lrm.features_3_modulation.total_mod:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_10_79 [label=<<b>identity_10_79</b><br/>1x192x27x27 (546.9 KB)<br/>@lrm.features_3_modulation.total_mod:3> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_11_80 [label=<<b>identity_11_80</b><br/>1x192x27x27 (546.9 KB)<br/>@lrm.features_3_modulation.total_mod:4> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	mul_8_81 [label=<<b>mul_8_81</b><br/>1x192x27x27 (546.9 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_6_82 [label=<<b>add_6_82</b><br/>1x192x27x27 (546.9 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_12_83 [label=<<b>identity_12_83</b><br/>1x192x27x27 (546.9 KB)<br/>@lrm.features_3_modulation.post_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_9_84 [label=<<b>relu_9_84</b><br/>1x192x27x27 (546.9 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	relu_2_5pass2 [label=<<b>relu_2_5:2</b><br/>1x192x27x27 (546.9 KB)<br/>@feedforward.features.4:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	maxpool2d_2_6pass2 [label=<<b>maxpool2d_2_6:2</b><br/>1x192x13x13 (126.9 KB)<br/>@feedforward.features.5:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_3_7pass2 [label=<<b>conv2d_3_7:2</b><br/>1x384x13x13 (253.7 KB)<br/>params: 384x192x3x3, x384<br/>@feedforward.features.6:2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_13_85 [label=<<b>identity_13_85</b><br/>1x384x13x13 (253.7 KB)<br/>@lrm.features_6_modulation.pre_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	zeroslike_3_86 [label=<<b>zeroslike_3_86</b><br/>1x384x13x13 (253.7 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	layernorm_3_87 [label=<<b>layernorm_3_87</b><br/>1x4096 (16.1 KB)<br/>params: x4096, x4096<br/>@lrm.features_6_modulation.from_classifier_2_to_features_6.rescale.norm> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	tanh_3_88 [label=<<b>tanh_3_88</b><br/>1x4096 (16.1 KB)<br/>@lrm.features_6_modulation.from_classifier_2_to_features_6.rescale.squash> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	unsqueeze_5_89 [label=<<b>unsqueeze_5_89</b><br/>1x4096x1 (16.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	unsqueeze_6_90 [label=<<b>unsqueeze_6_90</b><br/>1x4096x1x1 (16.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_5_91 [label=<<b>to_5_91</b><br/>1x4096x1x1 (16.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	lt_3_92 [label=<<b>lt_3_92</b><br/>1x4096x1x1 (4.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	ge_3_93 [label=<<b>ge_3_93</b><br/>1x4096x1x1 (4.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_5_94 [label=<<b>float_5_94</b><br/>1x4096x1x1 (16.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_9_95 [label=<<b>mul_9_95</b><br/>1x4096x1x1 (16.2 KB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_6_96 [label=<<b>float_6_96</b><br/>1x4096x1x1 (16.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_10_97 [label=<<b>mul_10_97</b><br/>1x4096x1x1 (16.2 KB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_7_98 [label=<<b>add_7_98</b><br/>1x4096x1x1 (16.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_11_99 [label=<<b>mul_11_99</b><br/>1x4096x1x1 (16.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_6_100 [label=<<b>to_6_100</b><br/>1x4096x1x1 (16.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	conv2d_8_101 [label=<<b>conv2d_8_101</b><br/>1x384x1x1 (1.7 KB)<br/>params: 384x4096x1x1, x384<br/>@lrm.features_6_modulation.from_classifier_2_to_features_6.modulation> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_8_101 -> add_8_102 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	add_8_102 [label=<<b>add_8_102</b><br/>1x384x13x13 (253.7 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_14_103 [label=<<b>identity_14_103</b><br/>1x384x13x13 (253.7 KB)<br/>@lrm.features_6_modulation.total_mod:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_15_104 [label=<<b>identity_15_104</b><br/>1x384x13x13 (253.7 KB)<br/>@lrm.features_6_modulation.total_mod:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_16_105 [label=<<b>identity_16_105</b><br/>1x384x13x13 (253.7 KB)<br/>@lrm.features_6_modulation.total_mod:3> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_17_106 [label=<<b>identity_17_106</b><br/>1x384x13x13 (253.7 KB)<br/>@lrm.features_6_modulation.total_mod:4> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	mul_12_107 [label=<<b>mul_12_107</b><br/>1x384x13x13 (253.7 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_9_108 [label=<<b>add_9_108</b><br/>1x384x13x13 (253.7 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_18_109 [label=<<b>identity_18_109</b><br/>1x384x13x13 (253.7 KB)<br/>@lrm.features_6_modulation.post_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_10_110 [label=<<b>relu_10_110</b><br/>1x384x13x13 (253.7 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	relu_3_8pass2 [label=<<b>relu_3_8:2</b><br/>1x384x13x13 (253.7 KB)<br/>@feedforward.features.7:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_4_9pass2 [label=<<b>conv2d_4_9:2</b><br/>1x256x13x13 (169.2 KB)<br/>params: 256x384x3x3, x256<br/>@feedforward.features.8:2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_19_111 [label=<<b>identity_19_111</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_8_modulation.pre_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	zeroslike_4_112 [label=<<b>zeroslike_4_112</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	layernorm_4_113 [label=<<b>layernorm_4_113</b><br/>1x1000 (4.0 KB)<br/>params: x1000, x1000<br/>@lrm.features_8_modulation.from_classifier_6_to_features_8.rescale.norm> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	tanh_4_114 [label=<<b>tanh_4_114</b><br/>1x1000 (4.0 KB)<br/>@lrm.features_8_modulation.from_classifier_6_to_features_8.rescale.squash> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	unsqueeze_7_115 [label=<<b>unsqueeze_7_115</b><br/>1x1000x1 (4.0 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	unsqueeze_8_116 [label=<<b>unsqueeze_8_116</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_7_117 [label=<<b>to_7_117</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	lt_4_118 [label=<<b>lt_4_118</b><br/>1x1000x1x1 (1.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	ge_4_119 [label=<<b>ge_4_119</b><br/>1x1000x1x1 (1.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_7_120 [label=<<b>float_7_120</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_13_121 [label=<<b>mul_13_121</b><br/>1x1000x1x1 (4.1 KB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_8_122 [label=<<b>float_8_122</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_14_123 [label=<<b>mul_14_123</b><br/>1x1000x1x1 (4.1 KB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_10_124 [label=<<b>add_10_124</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_15_125 [label=<<b>mul_15_125</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_8_126 [label=<<b>to_8_126</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	conv2d_9_127 [label=<<b>conv2d_9_127</b><br/>1x256x1x1 (1.2 KB)<br/>params: 256x1000x1x1, x256<br/>@lrm.features_8_modulation.from_classifier_6_to_features_8.modulation> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_9_127 -> add_11_128 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	add_11_128 [label=<<b>add_11_128</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_20_129 [label=<<b>identity_20_129</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_8_modulation.total_mod:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_21_130 [label=<<b>identity_21_130</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_8_modulation.total_mod:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_22_131 [label=<<b>identity_22_131</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_8_modulation.total_mod:3> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_23_132 [label=<<b>identity_23_132</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_8_modulation.total_mod:4> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	mul_16_133 [label=<<b>mul_16_133</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_12_134 [label=<<b>add_12_134</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_24_135 [label=<<b>identity_24_135</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_8_modulation.post_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_11_136 [label=<<b>relu_11_136</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	relu_4_10pass2 [label=<<b>relu_4_10:2</b><br/>1x256x13x13 (169.2 KB)<br/>@feedforward.features.9:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_5_11pass2 [label=<<b>conv2d_5_11:2</b><br/>1x256x13x13 (169.2 KB)<br/>params: 256x256x3x3, x256<br/>@feedforward.features.10:2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_25_137 [label=<<b>identity_25_137</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_10_modulation.pre_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	zeroslike_5_138 [label=<<b>zeroslike_5_138</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	layernorm_5_139 [label=<<b>layernorm_5_139</b><br/>1x1000 (4.0 KB)<br/>params: x1000, x1000<br/>@lrm.features_10_modulation.from_classifier_6_to_features_10.rescale.norm> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	tanh_5_140 [label=<<b>tanh_5_140</b><br/>1x1000 (4.0 KB)<br/>@lrm.features_10_modulation.from_classifier_6_to_features_10.rescale.squash> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	unsqueeze_9_141 [label=<<b>unsqueeze_9_141</b><br/>1x1000x1 (4.0 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	unsqueeze_10_142 [label=<<b>unsqueeze_10_142</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_9_143 [label=<<b>to_9_143</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	lt_5_144 [label=<<b>lt_5_144</b><br/>1x1000x1x1 (1.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	ge_5_145 [label=<<b>ge_5_145</b><br/>1x1000x1x1 (1.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_9_146 [label=<<b>float_9_146</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_17_147 [label=<<b>mul_17_147</b><br/>1x1000x1x1 (4.1 KB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	float_10_148 [label=<<b>float_10_148</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_18_149 [label=<<b>mul_18_149</b><br/>1x1000x1x1 (4.1 KB)<br/>params: x1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_13_150 [label=<<b>add_13_150</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	mul_19_151 [label=<<b>mul_19_151</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	to_10_152 [label=<<b>to_10_152</b><br/>1x1000x1x1 (4.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	conv2d_10_153 [label=<<b>conv2d_10_153</b><br/>1x256x1x1 (1.2 KB)<br/>params: 256x1000x1x1, x256<br/>@lrm.features_10_modulation.from_classifier_6_to_features_10.modulation> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	conv2d_10_153 -> add_14_154 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	add_14_154 [label=<<b>add_14_154</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_26_155 [label=<<b>identity_26_155</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_10_modulation.total_mod:1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_27_156 [label=<<b>identity_27_156</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_10_modulation.total_mod:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_28_157 [label=<<b>identity_28_157</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_10_modulation.total_mod:3> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	identity_29_158 [label=<<b>identity_29_158</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_10_modulation.total_mod:4> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	mul_20_159 [label=<<b>mul_20_159</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	add_15_160 [label=<<b>add_15_160</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	identity_30_161 [label=<<b>identity_30_161</b><br/>1x256x13x13 (169.2 KB)<br/>@lrm.features_10_modulation.post_mod_output> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_12_162 [label=<<b>relu_12_162</b><br/>1x256x13x13 (169.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	relu_5_12pass2 [label=<<b>relu_5_12:2</b><br/>1x256x13x13 (169.2 KB)<br/>@feedforward.features.11:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	maxpool2d_3_13pass2 [label=<<b>maxpool2d_3_13:2</b><br/>1x256x6x6 (36.2 KB)<br/>@feedforward.features.12:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	adaptiveavgpool2d_1_14pass2 [label=<<b>adaptiveavgpool2d_1_14:2</b><br/>1x256x6x6 (36.2 KB)<br/>@feedforward.avgpool:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	flatten_1_15pass2 [label=<<b>flatten_1_15:2</b><br/>1x9216 (36.1 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
-	dropout_1_16pass2 [label=<<b>dropout_1_16:2</b><br/>1x9216 (36.1 KB)<br/>@feedforward.classifier.0:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	linear_1_17pass2 [label=<<b>linear_1_17:2</b><br/>1x4096 (16.1 KB)<br/>params: 4096x9216, x4096<br/>@feedforward.classifier.1:2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_6_18pass2 [label=<<b>relu_6_18:2</b><br/>1x4096 (16.1 KB)<br/>@feedforward.classifier.2:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	dropout_2_19pass2 [label=<<b>dropout_2_19:2</b><br/>1x4096 (16.1 KB)<br/>@feedforward.classifier.3:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	linear_2_20pass2 [label=<<b>linear_2_20:2</b><br/>1x4096 (16.1 KB)<br/>params: 4096x4096, x4096<br/>@feedforward.classifier.4:2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	relu_7_21pass2 [label=<<b>relu_7_21:2</b><br/>1x4096 (16.1 KB)<br/>@feedforward.classifier.5:2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
-	linear_3_22pass2 [label=<<b>linear_3_22:2</b><br/>1x1000 (4.0 KB)<br/>params: 1000x4096, x1000<br/>@feedforward.classifier.6:2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
-	linear_3_22pass2 -> output_1pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	output_1pass1 [label=<<b>output_1:1</b><br/>1x1000 (4.0 KB)<br/>@output.0> color=black fillcolor="#ff9999" fontcolor=black ordering=out shape=oval style="filled,solid"]
-	output_1pass2 [label=<<b>output_1:2</b><br/>1x1000 (4.0 KB)<br/>@output.1> color=black fillcolor="#ff9999" fontcolor=black ordering=out shape=oval style="filled,solid"]
+	input_1 -> conv2d_1_1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	conv2d_1_1 [label=<<b>conv2d_1_1</b><br/>1x64x112x112 (3.1 MB)<br/>params: 64x3x7x7<br/>@backbone.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_1_2 [label=<<b>batchnorm_1_2</b><br/>1x64x112x112 (3.1 MB)<br/>params: x64, x64<br/>@backbone.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_1_3 [label=<<b>relu_1_3</b><br/>1x64x112x112 (3.1 MB)<br/>@backbone.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	maxpool2d_1_4 [label=<<b>maxpool2d_1_4</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.maxpool> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_2_5 [label=<<b>conv2d_2_5</b><br/>1x64x56x56 (784.2 KB)<br/>params: 64x64x3x3<br/>@backbone.layer1.0.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_2_6 [label=<<b>batchnorm_2_6</b><br/>1x64x56x56 (784.2 KB)<br/>params: x64, x64<br/>@backbone.layer1.0.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_1_7 [label=<<b>identity_1_7</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.layer1.0.drop_block> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_2_8 [label=<<b>relu_2_8</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.layer1.0.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_2_9 [label=<<b>identity_2_9</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.layer1.0.aa> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_3_10 [label=<<b>conv2d_3_10</b><br/>1x64x56x56 (784.2 KB)<br/>params: 64x64x3x3<br/>@backbone.layer1.0.conv2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_3_11 [label=<<b>batchnorm_3_11</b><br/>1x64x56x56 (784.2 KB)<br/>params: x64, x64<br/>@backbone.layer1.0.bn2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	iadd_1_12 [label=<<b>iadd_1_12</b><br/>1x64x56x56 (784.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
+	relu_3_13 [label=<<b>relu_3_13</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.layer1.0.act2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_4_14 [label=<<b>conv2d_4_14</b><br/>1x64x56x56 (784.2 KB)<br/>params: 64x64x3x3<br/>@backbone.layer1.1.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_4_15 [label=<<b>batchnorm_4_15</b><br/>1x64x56x56 (784.2 KB)<br/>params: x64, x64<br/>@backbone.layer1.1.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_3_16 [label=<<b>identity_3_16</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.layer1.1.drop_block> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_4_17 [label=<<b>relu_4_17</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.layer1.1.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_4_18 [label=<<b>identity_4_18</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.layer1.1.aa> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_5_19 [label=<<b>conv2d_5_19</b><br/>1x64x56x56 (784.2 KB)<br/>params: 64x64x3x3<br/>@backbone.layer1.1.conv2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_5_20 [label=<<b>batchnorm_5_20</b><br/>1x64x56x56 (784.2 KB)<br/>params: x64, x64<br/>@backbone.layer1.1.bn2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	iadd_2_21 [label=<<b>iadd_2_21</b><br/>1x64x56x56 (784.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
+	relu_5_22 [label=<<b>relu_5_22</b><br/>1x64x56x56 (784.2 KB)<br/>@backbone.layer1.1.act2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_6_23 [label=<<b>conv2d_6_23</b><br/>1x128x28x28 (392.2 KB)<br/>params: 128x64x3x3<br/>@backbone.layer2.0.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_6_24 [label=<<b>batchnorm_6_24</b><br/>1x128x28x28 (392.2 KB)<br/>params: x128, x128<br/>@backbone.layer2.0.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_5_25 [label=<<b>identity_5_25</b><br/>1x128x28x28 (392.2 KB)<br/>@backbone.layer2.0.drop_block> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_6_26 [label=<<b>relu_6_26</b><br/>1x128x28x28 (392.2 KB)<br/>@backbone.layer2.0.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_6_27 [label=<<b>identity_6_27</b><br/>1x128x28x28 (392.2 KB)<br/>@backbone.layer2.0.aa> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_7_28 [label=<<b>conv2d_7_28</b><br/>1x128x28x28 (392.2 KB)<br/>params: 128x128x3x3<br/>@backbone.layer2.0.conv2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_7_29 [label=<<b>batchnorm_7_29</b><br/>1x128x28x28 (392.2 KB)<br/>params: x128, x128<br/>@backbone.layer2.0.bn2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_8_30 [label=<<b>conv2d_8_30</b><br/>1x128x28x28 (392.2 KB)<br/>params: 128x64x1x1<br/>@backbone.layer2.0.downsample.0> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_8_31 [label=<<b>batchnorm_8_31</b><br/>1x128x28x28 (392.2 KB)<br/>params: x128, x128<br/>@backbone.layer2.0.downsample.1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	iadd_3_32 [label=<<b>iadd_3_32</b><br/>1x128x28x28 (392.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
+	relu_7_33 [label=<<b>relu_7_33</b><br/>1x128x28x28 (392.2 KB)<br/>@backbone.layer2.0.act2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_9_34 [label=<<b>conv2d_9_34</b><br/>1x128x28x28 (392.2 KB)<br/>params: 128x128x3x3<br/>@backbone.layer2.1.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_9_35 [label=<<b>batchnorm_9_35</b><br/>1x128x28x28 (392.2 KB)<br/>params: x128, x128<br/>@backbone.layer2.1.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_7_36 [label=<<b>identity_7_36</b><br/>1x128x28x28 (392.2 KB)<br/>@backbone.layer2.1.drop_block> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_8_37 [label=<<b>relu_8_37</b><br/>1x128x28x28 (392.2 KB)<br/>@backbone.layer2.1.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_8_38 [label=<<b>identity_8_38</b><br/>1x128x28x28 (392.2 KB)<br/>@backbone.layer2.1.aa> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_10_39 [label=<<b>conv2d_10_39</b><br/>1x128x28x28 (392.2 KB)<br/>params: 128x128x3x3<br/>@backbone.layer2.1.conv2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_10_40 [label=<<b>batchnorm_10_40</b><br/>1x128x28x28 (392.2 KB)<br/>params: x128, x128<br/>@backbone.layer2.1.bn2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	iadd_4_41 [label=<<b>iadd_4_41</b><br/>1x128x28x28 (392.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
+	relu_9_42 [label=<<b>relu_9_42</b><br/>1x128x28x28 (392.2 KB)<br/>@backbone.layer2.1.act2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_11_43 [label=<<b>conv2d_11_43</b><br/>1x256x14x14 (196.2 KB)<br/>params: 256x128x3x3<br/>@backbone.layer3.0.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_11_44 [label=<<b>batchnorm_11_44</b><br/>1x256x14x14 (196.2 KB)<br/>params: x256, x256<br/>@backbone.layer3.0.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_9_45 [label=<<b>identity_9_45</b><br/>1x256x14x14 (196.2 KB)<br/>@backbone.layer3.0.drop_block> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_10_46 [label=<<b>relu_10_46</b><br/>1x256x14x14 (196.2 KB)<br/>@backbone.layer3.0.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_10_47 [label=<<b>identity_10_47</b><br/>1x256x14x14 (196.2 KB)<br/>@backbone.layer3.0.aa> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_12_48 [label=<<b>conv2d_12_48</b><br/>1x256x14x14 (196.2 KB)<br/>params: 256x256x3x3<br/>@backbone.layer3.0.conv2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_12_49 [label=<<b>batchnorm_12_49</b><br/>1x256x14x14 (196.2 KB)<br/>params: x256, x256<br/>@backbone.layer3.0.bn2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_13_50 [label=<<b>conv2d_13_50</b><br/>1x256x14x14 (196.2 KB)<br/>params: 256x128x1x1<br/>@backbone.layer3.0.downsample.0> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_13_51 [label=<<b>batchnorm_13_51</b><br/>1x256x14x14 (196.2 KB)<br/>params: x256, x256<br/>@backbone.layer3.0.downsample.1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	iadd_5_52 [label=<<b>iadd_5_52</b><br/>1x256x14x14 (196.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
+	relu_11_53 [label=<<b>relu_11_53</b><br/>1x256x14x14 (196.2 KB)<br/>@backbone.layer3.0.act2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_14_54 [label=<<b>conv2d_14_54</b><br/>1x256x14x14 (196.2 KB)<br/>params: 256x256x3x3<br/>@backbone.layer3.1.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_14_55 [label=<<b>batchnorm_14_55</b><br/>1x256x14x14 (196.2 KB)<br/>params: x256, x256<br/>@backbone.layer3.1.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_11_56 [label=<<b>identity_11_56</b><br/>1x256x14x14 (196.2 KB)<br/>@backbone.layer3.1.drop_block> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_12_57 [label=<<b>relu_12_57</b><br/>1x256x14x14 (196.2 KB)<br/>@backbone.layer3.1.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_12_58 [label=<<b>identity_12_58</b><br/>1x256x14x14 (196.2 KB)<br/>@backbone.layer3.1.aa> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_15_59 [label=<<b>conv2d_15_59</b><br/>1x256x14x14 (196.2 KB)<br/>params: 256x256x3x3<br/>@backbone.layer3.1.conv2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_15_60 [label=<<b>batchnorm_15_60</b><br/>1x256x14x14 (196.2 KB)<br/>params: x256, x256<br/>@backbone.layer3.1.bn2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	iadd_6_61 [label=<<b>iadd_6_61</b><br/>1x256x14x14 (196.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
+	relu_13_62 [label=<<b>relu_13_62</b><br/>1x256x14x14 (196.2 KB)<br/>@backbone.layer3.1.act2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_16_63 [label=<<b>conv2d_16_63</b><br/>1x512x7x7 (98.2 KB)<br/>params: 512x256x3x3<br/>@backbone.layer4.0.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_16_64 [label=<<b>batchnorm_16_64</b><br/>1x512x7x7 (98.2 KB)<br/>params: x512, x512<br/>@backbone.layer4.0.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_13_65 [label=<<b>identity_13_65</b><br/>1x512x7x7 (98.2 KB)<br/>@backbone.layer4.0.drop_block> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_14_66 [label=<<b>relu_14_66</b><br/>1x512x7x7 (98.2 KB)<br/>@backbone.layer4.0.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_14_67 [label=<<b>identity_14_67</b><br/>1x512x7x7 (98.2 KB)<br/>@backbone.layer4.0.aa> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_17_68 [label=<<b>conv2d_17_68</b><br/>1x512x7x7 (98.2 KB)<br/>params: 512x512x3x3<br/>@backbone.layer4.0.conv2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_17_69 [label=<<b>batchnorm_17_69</b><br/>1x512x7x7 (98.2 KB)<br/>params: x512, x512<br/>@backbone.layer4.0.bn2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_18_70 [label=<<b>conv2d_18_70</b><br/>1x512x7x7 (98.2 KB)<br/>params: 512x256x1x1<br/>@backbone.layer4.0.downsample.0> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_18_71 [label=<<b>batchnorm_18_71</b><br/>1x512x7x7 (98.2 KB)<br/>params: x512, x512<br/>@backbone.layer4.0.downsample.1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	iadd_7_72 [label=<<b>iadd_7_72</b><br/>1x512x7x7 (98.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
+	relu_15_73 [label=<<b>relu_15_73</b><br/>1x512x7x7 (98.2 KB)<br/>@backbone.layer4.0.act2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_19_74 [label=<<b>conv2d_19_74</b><br/>1x512x7x7 (98.2 KB)<br/>params: 512x512x3x3<br/>@backbone.layer4.1.conv1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_19_75 [label=<<b>batchnorm_19_75</b><br/>1x512x7x7 (98.2 KB)<br/>params: x512, x512<br/>@backbone.layer4.1.bn1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_15_76 [label=<<b>identity_15_76</b><br/>1x512x7x7 (98.2 KB)<br/>@backbone.layer4.1.drop_block> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_16_77 [label=<<b>relu_16_77</b><br/>1x512x7x7 (98.2 KB)<br/>@backbone.layer4.1.act1> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	identity_16_78 [label=<<b>identity_16_78</b><br/>1x512x7x7 (98.2 KB)<br/>@backbone.layer4.1.aa> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	conv2d_20_79 [label=<<b>conv2d_20_79</b><br/>1x512x7x7 (98.2 KB)<br/>params: 512x512x3x3<br/>@backbone.layer4.1.conv2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_20_80 [label=<<b>batchnorm_20_80</b><br/>1x512x7x7 (98.2 KB)<br/>params: x512, x512<br/>@backbone.layer4.1.bn2> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	iadd_8_81 [label=<<b>iadd_8_81</b><br/>1x512x7x7 (98.2 KB)> color=black fillcolor=white fontcolor=black ordering=out shape=oval style="filled,solid"]
+	relu_17_82 [label=<<b>relu_17_82</b><br/>1x512x7x7 (98.2 KB)<br/>@backbone.layer4.1.act2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	adaptiveavgpool2d_1_83 [label=<<b>adaptiveavgpool2d_1_83</b><br/>1x512x1x1 (2.2 KB)<br/>@backbone.global_pool.pool> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	flatten_1_84 [label=<<b>flatten_1_84</b><br/>1x512 (2.1 KB)<br/>@backbone.global_pool.flatten> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	flatten_1_84 -> linear_1_86 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	identity_17_85 [label=<<b>identity_17_85</b><br/>1x512 (2.1 KB)<br/>@backbone.fc> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	linear_1_86 [label=<<b>linear_1_86</b><br/>1x512 (2.1 KB)<br/>params: 512x512, x512<br/>@projector.model.0> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_21_87 [label=<<b>batchnorm_21_87</b><br/>1x512 (2.1 KB)<br/>params: x512, x512<br/>@projector.model.1> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_18_88 [label=<<b>relu_18_88</b><br/>1x512 (2.1 KB)<br/>@projector.model.2> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	linear_2_89 [label=<<b>linear_2_89</b><br/>1x512 (2.1 KB)<br/>params: 512x512, x512<br/>@projector.model.3> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	batchnorm_22_90 [label=<<b>batchnorm_22_90</b><br/>1x512 (2.1 KB)<br/>params: x512, x512<br/>@projector.model.4> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_19_91 [label=<<b>relu_19_91</b><br/>1x512 (2.1 KB)<br/>@projector.model.5> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	linear_3_92 [label=<<b>linear_3_92</b><br/>1x512 (2.1 KB)<br/>params: 512x512, x512<br/>@projector.model.6> color=black fillcolor="#E6E6E6" fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_20_93 [label=<<b>relu_20_93</b><br/>1x512 (2.1 KB)<br/>@projector.model.7> color=black fillcolor=white fontcolor=black ordering=out shape=box style="filled,solid"]
+	relu_20_93 -> output_1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	output_1 [label=<<b>output_1</b><br/>1x512 (2.1 KB)<br/>@output> color=black fillcolor="#ff9999" fontcolor=black ordering=out shape=oval style="filled,solid"]
 	{
 		rank=sink
-		output_1pass2
-	}
-	subgraph cluster_feedforward_pass1 {
-		fillcolor=white label=<<B>@feedforward:1</B><br align='left'/>(AlexNet)<br align='left'/>> labelloc=b penwidth=5.0 style="filled,solid"
-		maxpool2d_3_13pass1 -> adaptiveavgpool2d_1_14pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		maxpool2d_3_13pass1 -> layernorm_2_62 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		adaptiveavgpool2d_1_14pass1 -> flatten_1_15pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		flatten_1_15pass1 -> dropout_1_16pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	}
-	subgraph cluster_feedforward_pass2 {
-		fillcolor=white label=<<B>@feedforward:2</B><br align='left'/>(AlexNet)<br align='left'/>> labelloc=b penwidth=5.0 style="filled,solid"
-		maxpool2d_3_13pass2 -> adaptiveavgpool2d_1_14pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		adaptiveavgpool2d_1_14pass2 -> flatten_1_15pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		flatten_1_15pass2 -> dropout_1_16pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	}
-	subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8_pass1" {
-		fillcolor=white label=<<B>@lrm.features_8_modulation.from_classifier_6_to_features_8</B><br align='left'/>(ModBlock)<br align='left'/>> labelloc=b penwidth=5.0 style="filled,solid"
-		to_7_117 -> lt_4_118 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		to_7_117 -> ge_4_119 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		to_7_117 -> mul_15_125 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		lt_4_118 -> float_7_120 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		ge_4_119 -> float_8_122 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		float_7_120 -> mul_13_121 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		mul_13_121 -> add_10_124 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		float_8_122 -> mul_14_123 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		mul_14_123 -> add_10_124 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		add_10_124 -> mul_15_125 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		mul_15_125 -> to_8_126 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		to_8_126 -> conv2d_9_127 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	}
-	subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10_pass1" {
-		fillcolor=white label=<<B>@lrm.features_10_modulation.from_classifier_6_to_features_10</B><br align='left'/>(ModBlock)<br align='left'/>> labelloc=b penwidth=5.0 style="filled,solid"
-		to_9_143 -> lt_5_144 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		to_9_143 -> ge_5_145 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		to_9_143 -> mul_19_151 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		lt_5_144 -> float_9_146 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		ge_5_145 -> float_10_148 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		float_9_146 -> mul_17_147 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		mul_17_147 -> add_13_150 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		float_10_148 -> mul_18_149 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		mul_18_149 -> add_13_150 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		add_13_150 -> mul_19_151 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		mul_19_151 -> to_10_152 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		to_10_152 -> conv2d_10_153 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			fillcolor=white label=<<B>@feedforward.features:1</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,solid"
-			conv2d_1_1pass1 -> relu_1_2pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_1_2pass1 -> maxpool2d_1_3pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			maxpool2d_1_3pass1 -> conv2d_2_4pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_2_4pass1 -> relu_2_5pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_2_5pass1 -> maxpool2d_2_6pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			maxpool2d_2_6pass1 -> conv2d_3_7pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_3_7pass1 -> relu_3_8pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_3_8pass1 -> conv2d_4_9pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_4_9pass1 -> relu_4_10pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_4_10pass1 -> conv2d_5_11pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_4_10pass1 -> layernorm_1_31 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_5_11pass1 -> relu_5_12pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_5_12pass1 -> maxpool2d_3_13pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		output_1
+	}
+	subgraph cluster_backbone_pass1 {
+		fillcolor=white label=<<B>@backbone</B><br align='left'/>(ResNet)<br align='left'/>> labelloc=b penwidth=5.0 style="filled,solid"
+		conv2d_1_1 -> batchnorm_1_2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		batchnorm_1_2 -> relu_1_3 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		relu_1_3 -> maxpool2d_1_4 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		maxpool2d_1_4 -> conv2d_2_5 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		maxpool2d_1_4 -> iadd_1_12 [label=<<FONT POINT-SIZE='10'><b>arg 1</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		relu_5_22 -> conv2d_6_23 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		relu_5_22 -> conv2d_8_30 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		relu_9_42 -> conv2d_11_43 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		relu_9_42 -> conv2d_13_50 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		relu_13_62 -> conv2d_16_63 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		relu_13_62 -> conv2d_18_70 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		relu_17_82 -> adaptiveavgpool2d_1_83 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		flatten_1_84 -> identity_17_85 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	}
+	subgraph cluster_projector_pass1 {
+		fillcolor=white label=<<B>@projector</B><br align='left'/>(Projector)<br align='left'/>> labelloc=b penwidth=5.0 style="filled,solid"
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.conv1_pass1" {
+			fillcolor=white label=<<B>@backbone.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,dashed"
 		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.avgpool_pass1" {
-			fillcolor=white label=<<B>@feedforward.avgpool:1</B><br align='left'/>(AdaptiveAvgPool2d)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,dashed"
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			fillcolor=white label=<<B>@feedforward.classifier:1</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,solid"
-			dropout_1_16pass1 -> linear_1_17pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			linear_1_17pass1 -> relu_6_18pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_6_18pass1 -> dropout_2_19pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_6_18pass1 -> layernorm_3_87 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			dropout_2_19pass1 -> linear_2_20pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			linear_2_20pass1 -> relu_7_21pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_7_21pass1 -> linear_3_22pass1 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3_pass1" {
-			fillcolor=white label=<<B>@lrm.features_3_modulation.from_features_12_to_features_3</B><br align='left'/>(ModBlock)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,solid"
-			interpolate_6_65 -> lt_2_66 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			interpolate_6_65 -> ge_2_67 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			interpolate_6_65 -> mul_7_73 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			lt_2_66 -> float_3_68 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			ge_2_67 -> float_4_70 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			float_3_68 -> mul_5_69 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			mul_5_69 -> add_4_72 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			float_4_70 -> mul_6_71 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			mul_6_71 -> add_4_72 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_4_72 -> mul_7_73 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			mul_7_73 -> to_4_74 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			to_4_74 -> conv2d_7_75 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			fillcolor=white label=<<B>@feedforward.features:2</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,solid"
-			conv2d_1_1pass2 -> identity_1_23 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_1_1pass2 -> zeroslike_1_24 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_1_1pass2 -> mul_4_50 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_1_1pass2 -> add_3_51 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			zeroslike_1_24 -> add_2_45 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_2_45 -> identity_2_46 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_2_45 -> identity_3_47 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_2_45 -> identity_4_48 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_2_45 -> identity_5_49 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_2_45 -> mul_4_50 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			mul_4_50 -> add_3_51 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_3_51 -> identity_6_52 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_3_51 -> relu_8_53 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_8_53 -> relu_1_2pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_1_2pass2 -> maxpool2d_1_3pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			maxpool2d_1_3pass2 -> conv2d_2_4pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_2_4pass2 -> identity_7_54 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_2_4pass2 -> zeroslike_2_55 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_2_4pass2 -> mul_8_81 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_2_4pass2 -> add_6_82 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			zeroslike_2_55 -> add_5_76 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_5_76 -> identity_8_77 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_5_76 -> identity_9_78 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_5_76 -> identity_10_79 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_5_76 -> identity_11_80 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_5_76 -> mul_8_81 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			mul_8_81 -> add_6_82 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_6_82 -> identity_12_83 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_6_82 -> relu_9_84 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_9_84 -> relu_2_5pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_2_5pass2 -> maxpool2d_2_6pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			maxpool2d_2_6pass2 -> conv2d_3_7pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_3_7pass2 -> identity_13_85 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_3_7pass2 -> zeroslike_3_86 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_3_7pass2 -> mul_12_107 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_3_7pass2 -> add_9_108 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			zeroslike_3_86 -> add_8_102 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_8_102 -> identity_14_103 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_8_102 -> identity_15_104 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_8_102 -> identity_16_105 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_8_102 -> identity_17_106 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_8_102 -> mul_12_107 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			mul_12_107 -> add_9_108 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_9_108 -> identity_18_109 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_9_108 -> relu_10_110 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_10_110 -> relu_3_8pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_3_8pass2 -> conv2d_4_9pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_4_9pass2 -> identity_19_111 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_4_9pass2 -> zeroslike_4_112 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_4_9pass2 -> mul_16_133 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_4_9pass2 -> add_12_134 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			zeroslike_4_112 -> add_11_128 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_11_128 -> identity_20_129 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_11_128 -> identity_21_130 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_11_128 -> identity_22_131 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_11_128 -> identity_23_132 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_11_128 -> mul_16_133 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			mul_16_133 -> add_12_134 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_12_134 -> identity_24_135 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_12_134 -> relu_11_136 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_11_136 -> relu_4_10pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_4_10pass2 -> conv2d_5_11pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_5_11pass2 -> identity_25_137 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_5_11pass2 -> zeroslike_5_138 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_5_11pass2 -> mul_20_159 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			conv2d_5_11pass2 -> add_15_160 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			zeroslike_5_138 -> add_14_154 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_14_154 -> identity_26_155 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_14_154 -> identity_27_156 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_14_154 -> identity_28_157 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_14_154 -> identity_29_158 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_14_154 -> mul_20_159 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			mul_20_159 -> add_15_160 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_15_160 -> identity_30_161 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			add_15_160 -> relu_12_162 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_12_162 -> relu_5_12pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_5_12pass2 -> maxpool2d_3_13pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.avgpool_pass2" {
-			fillcolor=white label=<<B>@feedforward.avgpool:2</B><br align='left'/>(AdaptiveAvgPool2d)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,dashed"
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.classifier_pass2" {
-			fillcolor=white label=<<B>@feedforward.classifier:2</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,solid"
-			dropout_1_16pass2 -> linear_1_17pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			linear_1_17pass2 -> relu_6_18pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_6_18pass2 -> dropout_2_19pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			dropout_2_19pass2 -> linear_2_20pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			linear_2_20pass2 -> relu_7_21pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			relu_7_21pass2 -> linear_3_22pass2 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		}
-	}
-	subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8_pass1" {
-		subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8.rescale_pass1" {
-			fillcolor=white label=<<B>@lrm.features_8_modulation.from_classifier_6_to_features_8.rescale</B><br align='left'/>(NormSquashResize)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,solid"
-			layernorm_4_113 -> tanh_4_114 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			tanh_4_114 -> unsqueeze_7_115 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		}
-	}
-	subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8_pass1" {
-		subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8.modulation_pass1" {
-			fillcolor=white label=<<B>@lrm.features_8_modulation.from_classifier_6_to_features_8.modulation</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,dashed"
-		}
-	}
-	subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10_pass1" {
-		subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10.rescale_pass1" {
-			fillcolor=white label=<<B>@lrm.features_10_modulation.from_classifier_6_to_features_10.rescale</B><br align='left'/>(NormSquashResize)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,solid"
-			layernorm_5_139 -> tanh_5_140 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			tanh_5_140 -> unsqueeze_9_141 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-		}
-	}
-	subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10_pass1" {
-		subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10.modulation_pass1" {
-			fillcolor=white label=<<B>@lrm.features_10_modulation.from_classifier_6_to_features_10.modulation</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=4.4 style="filled,dashed"
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.0_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.0:1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.1_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.1:1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.2_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.2:1</B><br align='left'/>(MaxPool2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.3_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.3:1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.4_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.4:1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.5_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.5:1</B><br align='left'/>(MaxPool2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.6_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.6:1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.7_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.7:1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.8_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.8:1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.9_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.9:1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.10_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.10:1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.11_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.11:1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_feedforward.features.12_pass1" {
-				fillcolor=white label=<<B>@feedforward.features.12:1</B><br align='left'/>(MaxPool2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0_pass1" {
-				fillcolor=white label=<<B>@lrm.features_0_modulation.from_features_9_to_features_0</B><br align='left'/>(ModBlock)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,solid"
-				interpolate_3_34 -> lt_1_35 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				interpolate_3_34 -> ge_1_36 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				interpolate_3_34 -> mul_3_42 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				lt_1_35 -> float_1_37 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				ge_1_36 -> float_2_39 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				float_1_37 -> mul_1_38 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				mul_1_38 -> add_1_41 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				float_2_39 -> mul_2_40 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				mul_2_40 -> add_1_41 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				add_1_41 -> mul_3_42 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				mul_3_42 -> to_2_43 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				to_2_43 -> conv2d_6_44 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_feedforward.classifier.0_pass1" {
-				fillcolor=white label=<<B>@feedforward.classifier.0:1</B><br align='left'/>(Dropout)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_feedforward.classifier.1_pass1" {
-				fillcolor=white label=<<B>@feedforward.classifier.1:1</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_feedforward.classifier.2_pass1" {
-				fillcolor=white label=<<B>@feedforward.classifier.2:1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_feedforward.classifier.3_pass1" {
-				fillcolor=white label=<<B>@feedforward.classifier.3:1</B><br align='left'/>(Dropout)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_feedforward.classifier.4_pass1" {
-				fillcolor=white label=<<B>@feedforward.classifier.4:1</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_feedforward.classifier.5_pass1" {
-				fillcolor=white label=<<B>@feedforward.classifier.5:1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_feedforward.classifier.6_pass1" {
-				fillcolor=white label=<<B>@feedforward.classifier.6:1</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6_pass1" {
-				fillcolor=white label=<<B>@lrm.features_6_modulation.from_classifier_2_to_features_6</B><br align='left'/>(ModBlock)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,solid"
-				to_5_91 -> lt_3_92 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				to_5_91 -> ge_3_93 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				to_5_91 -> mul_11_99 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				lt_3_92 -> float_5_94 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				ge_3_93 -> float_6_96 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				float_5_94 -> mul_9_95 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				mul_9_95 -> add_7_98 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				float_6_96 -> mul_10_97 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				mul_10_97 -> add_7_98 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				add_7_98 -> mul_11_99 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				mul_11_99 -> to_6_100 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				to_6_100 -> conv2d_8_101 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3_pass1" {
-			subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3.rescale_pass1" {
-				fillcolor=white label=<<B>@lrm.features_3_modulation.from_features_12_to_features_3.rescale</B><br align='left'/>(NormSquashResize)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,solid"
-				to_3_63 -> tanh_2_64 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				tanh_2_64 -> interpolate_6_65 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3_pass1" {
-			subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3.modulation_pass1" {
-				fillcolor=white label=<<B>@lrm.features_3_modulation.from_features_12_to_features_3.modulation</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.0_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.0:2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_0_modulation.pre_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_0_modulation.pre_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_0_modulation.total_mod_pass1" {
-				fillcolor=white label=<<B>@lrm.features_0_modulation.total_mod:1</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_0_modulation.total_mod_pass2" {
-				fillcolor=white label=<<B>@lrm.features_0_modulation.total_mod:2</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_0_modulation.total_mod_pass3" {
-				fillcolor=white label=<<B>@lrm.features_0_modulation.total_mod:3</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_0_modulation.total_mod_pass4" {
-				fillcolor=white label=<<B>@lrm.features_0_modulation.total_mod:4</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_0_modulation.post_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_0_modulation.post_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.1_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.1:2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.2_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.2:2</B><br align='left'/>(MaxPool2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.3_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.3:2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_3_modulation.pre_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_3_modulation.pre_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_3_modulation.total_mod_pass1" {
-				fillcolor=white label=<<B>@lrm.features_3_modulation.total_mod:1</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_3_modulation.total_mod_pass2" {
-				fillcolor=white label=<<B>@lrm.features_3_modulation.total_mod:2</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_3_modulation.total_mod_pass3" {
-				fillcolor=white label=<<B>@lrm.features_3_modulation.total_mod:3</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_3_modulation.total_mod_pass4" {
-				fillcolor=white label=<<B>@lrm.features_3_modulation.total_mod:4</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_3_modulation.post_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_3_modulation.post_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.4_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.4:2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.5_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.5:2</B><br align='left'/>(MaxPool2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.6_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.6:2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_6_modulation.pre_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_6_modulation.pre_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_6_modulation.total_mod_pass1" {
-				fillcolor=white label=<<B>@lrm.features_6_modulation.total_mod:1</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_6_modulation.total_mod_pass2" {
-				fillcolor=white label=<<B>@lrm.features_6_modulation.total_mod:2</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_6_modulation.total_mod_pass3" {
-				fillcolor=white label=<<B>@lrm.features_6_modulation.total_mod:3</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_6_modulation.total_mod_pass4" {
-				fillcolor=white label=<<B>@lrm.features_6_modulation.total_mod:4</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_6_modulation.post_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_6_modulation.post_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.7_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.7:2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.8_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.8:2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_8_modulation.pre_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.pre_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_8_modulation.total_mod_pass1" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.total_mod:1</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_8_modulation.total_mod_pass2" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.total_mod:2</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_8_modulation.total_mod_pass3" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.total_mod:3</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_8_modulation.total_mod_pass4" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.total_mod:4</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_8_modulation.post_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.post_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.9_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.9:2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.10_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.10:2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_10_modulation.pre_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.pre_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_10_modulation.total_mod_pass1" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.total_mod:1</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_10_modulation.total_mod_pass2" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.total_mod:2</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_10_modulation.total_mod_pass3" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.total_mod:3</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_10_modulation.total_mod_pass4" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.total_mod:4</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_lrm.features_10_modulation.post_mod_output_pass1" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.post_mod_output</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
-			}
-		}
-	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.11_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.11:2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.bn1_pass1" {
+			fillcolor=white label=<<B>@backbone.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,dashed"
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.act1_pass1" {
+			fillcolor=white label=<<B>@backbone.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,dashed"
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.maxpool_pass1" {
+			fillcolor=white label=<<B>@backbone.maxpool</B><br align='left'/>(MaxPool2d)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,dashed"
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			fillcolor=white label=<<B>@backbone.layer1</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,solid"
+			relu_3_13 -> conv2d_4_14 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			relu_3_13 -> iadd_2_21 [label=<<FONT POINT-SIZE='10'><b>arg 1</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			fillcolor=white label=<<B>@backbone.layer2</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,solid"
+			relu_7_33 -> conv2d_9_34 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			relu_7_33 -> iadd_4_41 [label=<<FONT POINT-SIZE='10'><b>arg 1</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			fillcolor=white label=<<B>@backbone.layer3</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,solid"
+			relu_11_53 -> conv2d_14_54 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			relu_11_53 -> iadd_6_61 [label=<<FONT POINT-SIZE='10'><b>arg 1</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			fillcolor=white label=<<B>@backbone.layer4</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,solid"
+			relu_15_73 -> conv2d_19_74 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			relu_15_73 -> iadd_8_81 [label=<<FONT POINT-SIZE='10'><b>arg 1</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.global_pool_pass1" {
+			fillcolor=white label=<<B>@backbone.global_pool</B><br align='left'/>(SelectAdaptivePool2d)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,solid"
+			adaptiveavgpool2d_1_83 -> flatten_1_84 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.fc_pass1" {
+			fillcolor=white label=<<B>@backbone.fc</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,dashed"
+		}
+	}
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			fillcolor=white label=<<B>@projector.model</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=4.25 style="filled,solid"
+			linear_1_86 -> batchnorm_21_87 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			batchnorm_21_87 -> relu_18_88 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			relu_18_88 -> linear_2_89 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			linear_2_89 -> batchnorm_22_90 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			batchnorm_22_90 -> relu_19_91 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			relu_19_91 -> linear_3_92 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			linear_3_92 -> relu_20_93 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				fillcolor=white label=<<B>@backbone.layer1.0</B><br align='left'/>(BasicBlock)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,solid"
+				conv2d_2_5 -> batchnorm_2_6 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_2_6 -> identity_1_7 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_2_6 -> relu_2_8 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_2_8 -> identity_2_9 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_2_8 -> conv2d_3_10 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				conv2d_3_10 -> batchnorm_3_11 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_3_11 -> iadd_1_12 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				iadd_1_12 -> relu_3_13 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				fillcolor=white label=<<B>@backbone.layer1.1</B><br align='left'/>(BasicBlock)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,solid"
+				conv2d_4_14 -> batchnorm_4_15 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_4_15 -> identity_3_16 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_4_15 -> relu_4_17 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_4_17 -> identity_4_18 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_4_17 -> conv2d_5_19 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				conv2d_5_19 -> batchnorm_5_20 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_5_20 -> iadd_2_21 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				iadd_2_21 -> relu_5_22 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				fillcolor=white label=<<B>@backbone.layer2.0</B><br align='left'/>(BasicBlock)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,solid"
+				conv2d_6_23 -> batchnorm_6_24 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_6_24 -> identity_5_25 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_6_24 -> relu_6_26 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_6_26 -> identity_6_27 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_6_26 -> conv2d_7_28 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				conv2d_7_28 -> batchnorm_7_29 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_7_29 -> iadd_3_32 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_8_31 -> iadd_3_32 [label=<<FONT POINT-SIZE='10'><b>arg 1</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				iadd_3_32 -> relu_7_33 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				fillcolor=white label=<<B>@backbone.layer2.1</B><br align='left'/>(BasicBlock)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,solid"
+				conv2d_9_34 -> batchnorm_9_35 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_9_35 -> identity_7_36 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_9_35 -> relu_8_37 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_8_37 -> identity_8_38 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_8_37 -> conv2d_10_39 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				conv2d_10_39 -> batchnorm_10_40 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_10_40 -> iadd_4_41 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				iadd_4_41 -> relu_9_42 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.features_pass2" {
-			subgraph "cluster_feedforward.features.12_pass2" {
-				fillcolor=white label=<<B>@feedforward.features.12:2</B><br align='left'/>(MaxPool2d)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				fillcolor=white label=<<B>@backbone.layer3.0</B><br align='left'/>(BasicBlock)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,solid"
+				conv2d_11_43 -> batchnorm_11_44 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_11_44 -> identity_9_45 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_11_44 -> relu_10_46 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_10_46 -> identity_10_47 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_10_46 -> conv2d_12_48 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				conv2d_12_48 -> batchnorm_12_49 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_12_49 -> iadd_5_52 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_13_51 -> iadd_5_52 [label=<<FONT POINT-SIZE='10'><b>arg 1</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				iadd_5_52 -> relu_11_53 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.classifier_pass2" {
-			subgraph "cluster_feedforward.classifier.0_pass2" {
-				fillcolor=white label=<<B>@feedforward.classifier.0:2</B><br align='left'/>(Dropout)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				fillcolor=white label=<<B>@backbone.layer3.1</B><br align='left'/>(BasicBlock)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,solid"
+				conv2d_14_54 -> batchnorm_14_55 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_14_55 -> identity_11_56 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_14_55 -> relu_12_57 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_12_57 -> identity_12_58 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_12_57 -> conv2d_15_59 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				conv2d_15_59 -> batchnorm_15_60 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_15_60 -> iadd_6_61 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				iadd_6_61 -> relu_13_62 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.classifier_pass2" {
-			subgraph "cluster_feedforward.classifier.1_pass2" {
-				fillcolor=white label=<<B>@feedforward.classifier.1:2</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				fillcolor=white label=<<B>@backbone.layer4.0</B><br align='left'/>(BasicBlock)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,solid"
+				conv2d_16_63 -> batchnorm_16_64 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_16_64 -> identity_13_65 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_16_64 -> relu_14_66 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_14_66 -> identity_14_67 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_14_66 -> conv2d_17_68 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				conv2d_17_68 -> batchnorm_17_69 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_17_69 -> iadd_7_72 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_18_71 -> iadd_7_72 [label=<<FONT POINT-SIZE='10'><b>arg 1</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				iadd_7_72 -> relu_15_73 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.classifier_pass2" {
-			subgraph "cluster_feedforward.classifier.2_pass2" {
-				fillcolor=white label=<<B>@feedforward.classifier.2:2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				fillcolor=white label=<<B>@backbone.layer4.1</B><br align='left'/>(BasicBlock)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,solid"
+				conv2d_19_74 -> batchnorm_19_75 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_19_75 -> identity_15_76 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_19_75 -> relu_16_77 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_16_77 -> identity_16_78 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				relu_16_77 -> conv2d_20_79 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				conv2d_20_79 -> batchnorm_20_80 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				batchnorm_20_80 -> iadd_8_81 [label=<<FONT POINT-SIZE='10'><b>arg 0</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				iadd_8_81 -> relu_17_82 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.classifier_pass2" {
-			subgraph "cluster_feedforward.classifier.3_pass2" {
-				fillcolor=white label=<<B>@feedforward.classifier.3:2</B><br align='left'/>(Dropout)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.global_pool_pass1" {
+			subgraph "cluster_backbone.global_pool.pool_pass1" {
+				fillcolor=white label=<<B>@backbone.global_pool.pool</B><br align='left'/>(AdaptiveAvgPool2d)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.classifier_pass2" {
-			subgraph "cluster_feedforward.classifier.4_pass2" {
-				fillcolor=white label=<<B>@feedforward.classifier.4:2</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.global_pool_pass1" {
+			subgraph "cluster_backbone.global_pool.flatten_pass1" {
+				fillcolor=white label=<<B>@backbone.global_pool.flatten</B><br align='left'/>(Flatten)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.classifier_pass2" {
-			subgraph "cluster_feedforward.classifier.5_pass2" {
-				fillcolor=white label=<<B>@feedforward.classifier.5:2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			subgraph "cluster_projector.model.0_pass1" {
+				fillcolor=white label=<<B>@projector.model.0</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass2 {
-		subgraph "cluster_feedforward.classifier_pass2" {
-			subgraph "cluster_feedforward.classifier.6_pass2" {
-				fillcolor=white label=<<B>@feedforward.classifier.6:2</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			subgraph "cluster_projector.model.1_pass1" {
+				fillcolor=white label=<<B>@projector.model.1</B><br align='left'/>(BatchNorm1d)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8_pass1" {
-		subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8.rescale_pass1" {
-			subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8.rescale.norm_pass1" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.from_classifier_6_to_features_8.rescale.norm</B><br align='left'/>(ChannelNorm)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			subgraph "cluster_projector.model.2_pass1" {
+				fillcolor=white label=<<B>@projector.model.2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8_pass1" {
-		subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8.rescale_pass1" {
-			subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8.rescale.squash_pass1" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.from_classifier_6_to_features_8.rescale.squash</B><br align='left'/>(FeedbackScale)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			subgraph "cluster_projector.model.3_pass1" {
+				fillcolor=white label=<<B>@projector.model.3</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8_pass1" {
-		subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8.rescale_pass1" {
-			subgraph "cluster_lrm.features_8_modulation.from_classifier_6_to_features_8.rescale.interp_pass1" {
-				fillcolor=white label=<<B>@lrm.features_8_modulation.from_classifier_6_to_features_8.rescale.interp</B><br align='left'/>(AddSpatialDimension)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,solid"
-				unsqueeze_7_115 -> unsqueeze_8_116 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				unsqueeze_8_116 -> to_7_117 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			subgraph "cluster_projector.model.4_pass1" {
+				fillcolor=white label=<<B>@projector.model.4</B><br align='left'/>(BatchNorm1d)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10_pass1" {
-		subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10.rescale_pass1" {
-			subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10.rescale.norm_pass1" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.from_classifier_6_to_features_10.rescale.norm</B><br align='left'/>(ChannelNorm)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			subgraph "cluster_projector.model.5_pass1" {
+				fillcolor=white label=<<B>@projector.model.5</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10_pass1" {
-		subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10.rescale_pass1" {
-			subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10.rescale.squash_pass1" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.from_classifier_6_to_features_10.rescale.squash</B><br align='left'/>(FeedbackScale)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,dashed"
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			subgraph "cluster_projector.model.6_pass1" {
+				fillcolor=white label=<<B>@projector.model.6</B><br align='left'/>(Linear)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10_pass1" {
-		subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10.rescale_pass1" {
-			subgraph "cluster_lrm.features_10_modulation.from_classifier_6_to_features_10.rescale.interp_pass1" {
-				fillcolor=white label=<<B>@lrm.features_10_modulation.from_classifier_6_to_features_10.rescale.interp</B><br align='left'/>(AddSpatialDimension)<br align='left'/>> labelloc=b penwidth=3.8 style="filled,solid"
-				unsqueeze_9_141 -> unsqueeze_10_142 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-				unsqueeze_10_142 -> to_9_143 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	subgraph cluster_projector_pass1 {
+		subgraph "cluster_projector.model_pass1" {
+			subgraph "cluster_projector.model.7_pass1" {
+				fillcolor=white label=<<B>@projector.model.7</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=3.5 style="filled,dashed"
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0_pass1" {
-				subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0.rescale_pass1" {
-					fillcolor=white label=<<B>@lrm.features_0_modulation.from_features_9_to_features_0.rescale</B><br align='left'/>(NormSquashResize)<br align='left'/>> labelloc=b penwidth=3.2 style="filled,solid"
-					to_1_32 -> tanh_1_33 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-					tanh_1_33 -> interpolate_3_34 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				subgraph "cluster_backbone.layer1.0.conv1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.0.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0_pass1" {
-				subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0.modulation_pass1" {
-					fillcolor=white label=<<B>@lrm.features_0_modulation.from_features_9_to_features_0.modulation</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.2 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				subgraph "cluster_backbone.layer1.0.bn1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.0.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6_pass1" {
-				subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6.rescale_pass1" {
-					fillcolor=white label=<<B>@lrm.features_6_modulation.from_classifier_2_to_features_6.rescale</B><br align='left'/>(NormSquashResize)<br align='left'/>> labelloc=b penwidth=3.2 style="filled,solid"
-					layernorm_3_87 -> tanh_3_88 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-					tanh_3_88 -> unsqueeze_5_89 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				subgraph "cluster_backbone.layer1.0.drop_block_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.0.drop_block</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6_pass1" {
-				subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6.modulation_pass1" {
-					fillcolor=white label=<<B>@lrm.features_6_modulation.from_classifier_2_to_features_6.modulation</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=3.2 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				subgraph "cluster_backbone.layer1.0.act1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.0.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3_pass1" {
-			subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3.rescale_pass1" {
-				subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3.rescale.norm_pass1" {
-					fillcolor=white label=<<B>@lrm.features_3_modulation.from_features_12_to_features_3.rescale.norm</B><br align='left'/>(AdaptiveFullstackNorm)<br align='left'/>> labelloc=b penwidth=3.2 style="filled,solid"
-					unsqueeze_3_56 -> interpolate_4_57 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-					interpolate_4_57 -> squeeze_3_58 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-					squeeze_3_58 -> layernorm_2_62 [label=<<FONT POINT-SIZE='10'><b>arg 2</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-					unsqueeze_4_59 -> interpolate_5_60 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-					interpolate_5_60 -> squeeze_4_61 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-					squeeze_4_61 -> layernorm_2_62 [label=<<FONT POINT-SIZE='10'><b>arg 3</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-					layernorm_2_62 -> to_3_63 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				subgraph "cluster_backbone.layer1.0.aa_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.0.aa</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3_pass1" {
-			subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3.rescale_pass1" {
-				subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3.rescale.squash_pass1" {
-					fillcolor=white label=<<B>@lrm.features_3_modulation.from_features_12_to_features_3.rescale.squash</B><br align='left'/>(FeedbackScale)<br align='left'/>> labelloc=b penwidth=3.2 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				subgraph "cluster_backbone.layer1.0.conv2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.0.conv2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3_pass1" {
-			subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3.rescale_pass1" {
-				subgraph "cluster_lrm.features_3_modulation.from_features_12_to_features_3.rescale.interp_pass1" {
-					fillcolor=white label=<<B>@lrm.features_3_modulation.from_features_12_to_features_3.rescale.interp</B><br align='left'/>(AdaptiveUpsample)<br align='left'/>> labelloc=b penwidth=3.2 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				subgraph "cluster_backbone.layer1.0.bn2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.0.bn2</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0_pass1" {
-				subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0.rescale_pass1" {
-					subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0.rescale.norm_pass1" {
-						fillcolor=white label=<<B>@lrm.features_0_modulation.from_features_9_to_features_0.rescale.norm</B><br align='left'/>(AdaptiveFullstackNorm)<br align='left'/>> labelloc=b penwidth=2.6 style="filled,solid"
-						unsqueeze_1_25 -> interpolate_1_26 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-						interpolate_1_26 -> squeeze_1_27 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-						squeeze_1_27 -> layernorm_1_31 [label=<<FONT POINT-SIZE='10'><b>arg 2</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-						unsqueeze_2_28 -> interpolate_2_29 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-						interpolate_2_29 -> squeeze_2_30 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-						squeeze_2_30 -> layernorm_1_31 [label=<<FONT POINT-SIZE='10'><b>arg 3</b></FONT>> arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=dashed]
-						layernorm_1_31 -> to_1_32 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.0_pass1" {
+				subgraph "cluster_backbone.layer1.0.act2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.0.act2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				subgraph "cluster_backbone.layer1.1.conv1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.1.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				subgraph "cluster_backbone.layer1.1.bn1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.1.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				subgraph "cluster_backbone.layer1.1.drop_block_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.1.drop_block</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				subgraph "cluster_backbone.layer1.1.act1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.1.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				subgraph "cluster_backbone.layer1.1.aa_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.1.aa</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				subgraph "cluster_backbone.layer1.1.conv2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.1.conv2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				subgraph "cluster_backbone.layer1.1.bn2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.1.bn2</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer1_pass1" {
+			subgraph "cluster_backbone.layer1.1_pass1" {
+				subgraph "cluster_backbone.layer1.1.act2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer1.1.act2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.conv1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.bn1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.drop_block_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.drop_block</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.act1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.aa_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.aa</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.conv2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.conv2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.bn2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.bn2</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.downsample_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.downsample</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,solid"
+					conv2d_8_30 -> batchnorm_8_31 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.act2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.0.act2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				subgraph "cluster_backbone.layer2.1.conv1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.1.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				subgraph "cluster_backbone.layer2.1.bn1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.1.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				subgraph "cluster_backbone.layer2.1.drop_block_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.1.drop_block</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				subgraph "cluster_backbone.layer2.1.act1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.1.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				subgraph "cluster_backbone.layer2.1.aa_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.1.aa</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				subgraph "cluster_backbone.layer2.1.conv2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.1.conv2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				subgraph "cluster_backbone.layer2.1.bn2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.1.bn2</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.1_pass1" {
+				subgraph "cluster_backbone.layer2.1.act2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer2.1.act2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.conv1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.bn1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.drop_block_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.drop_block</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.act1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.aa_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.aa</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.conv2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.conv2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.bn2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.bn2</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.downsample_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.downsample</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,solid"
+					conv2d_13_50 -> batchnorm_13_51 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.act2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.0.act2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				subgraph "cluster_backbone.layer3.1.conv1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.1.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				subgraph "cluster_backbone.layer3.1.bn1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.1.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				subgraph "cluster_backbone.layer3.1.drop_block_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.1.drop_block</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				subgraph "cluster_backbone.layer3.1.act1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.1.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				subgraph "cluster_backbone.layer3.1.aa_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.1.aa</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				subgraph "cluster_backbone.layer3.1.conv2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.1.conv2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				subgraph "cluster_backbone.layer3.1.bn2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.1.bn2</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.1_pass1" {
+				subgraph "cluster_backbone.layer3.1.act2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer3.1.act2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.conv1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.bn1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.drop_block_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.drop_block</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.act1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.aa_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.aa</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.conv2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.conv2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.bn2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.bn2</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.downsample_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.downsample</B><br align='left'/>(Sequential)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,solid"
+					conv2d_18_70 -> batchnorm_18_71 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.act2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.0.act2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				subgraph "cluster_backbone.layer4.1.conv1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.1.conv1</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				subgraph "cluster_backbone.layer4.1.bn1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.1.bn1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				subgraph "cluster_backbone.layer4.1.drop_block_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.1.drop_block</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				subgraph "cluster_backbone.layer4.1.act1_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.1.act1</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				subgraph "cluster_backbone.layer4.1.aa_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.1.aa</B><br align='left'/>(Identity)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				subgraph "cluster_backbone.layer4.1.conv2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.1.conv2</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				subgraph "cluster_backbone.layer4.1.bn2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.1.bn2</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.1_pass1" {
+				subgraph "cluster_backbone.layer4.1.act2_pass1" {
+					fillcolor=white label=<<B>@backbone.layer4.1.act2</B><br align='left'/>(ReLU)<br align='left'/>> labelloc=b penwidth=2.75 style="filled,dashed"
+				}
+			}
+		}
+	}
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.downsample_pass1" {
+					subgraph "cluster_backbone.layer2.0.downsample.0_pass1" {
+						fillcolor=white label=<<B>@backbone.layer2.0.downsample.0</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.0 style="filled,dashed"
 					}
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0_pass1" {
-				subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0.rescale_pass1" {
-					subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0.rescale.squash_pass1" {
-						fillcolor=white label=<<B>@lrm.features_0_modulation.from_features_9_to_features_0.rescale.squash</B><br align='left'/>(FeedbackScale)<br align='left'/>> labelloc=b penwidth=2.6 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer2_pass1" {
+			subgraph "cluster_backbone.layer2.0_pass1" {
+				subgraph "cluster_backbone.layer2.0.downsample_pass1" {
+					subgraph "cluster_backbone.layer2.0.downsample.1_pass1" {
+						fillcolor=white label=<<B>@backbone.layer2.0.downsample.1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.0 style="filled,dashed"
 					}
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.features_pass1" {
-			subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0_pass1" {
-				subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0.rescale_pass1" {
-					subgraph "cluster_lrm.features_0_modulation.from_features_9_to_features_0.rescale.interp_pass1" {
-						fillcolor=white label=<<B>@lrm.features_0_modulation.from_features_9_to_features_0.rescale.interp</B><br align='left'/>(AdaptiveUpsample)<br align='left'/>> labelloc=b penwidth=2.6 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.downsample_pass1" {
+					subgraph "cluster_backbone.layer3.0.downsample.0_pass1" {
+						fillcolor=white label=<<B>@backbone.layer3.0.downsample.0</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.0 style="filled,dashed"
 					}
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6_pass1" {
-				subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6.rescale_pass1" {
-					subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6.rescale.norm_pass1" {
-						fillcolor=white label=<<B>@lrm.features_6_modulation.from_classifier_2_to_features_6.rescale.norm</B><br align='left'/>(ChannelNorm)<br align='left'/>> labelloc=b penwidth=2.6 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer3_pass1" {
+			subgraph "cluster_backbone.layer3.0_pass1" {
+				subgraph "cluster_backbone.layer3.0.downsample_pass1" {
+					subgraph "cluster_backbone.layer3.0.downsample.1_pass1" {
+						fillcolor=white label=<<B>@backbone.layer3.0.downsample.1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.0 style="filled,dashed"
 					}
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6_pass1" {
-				subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6.rescale_pass1" {
-					subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6.rescale.squash_pass1" {
-						fillcolor=white label=<<B>@lrm.features_6_modulation.from_classifier_2_to_features_6.rescale.squash</B><br align='left'/>(FeedbackScale)<br align='left'/>> labelloc=b penwidth=2.6 style="filled,dashed"
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.downsample_pass1" {
+					subgraph "cluster_backbone.layer4.0.downsample.0_pass1" {
+						fillcolor=white label=<<B>@backbone.layer4.0.downsample.0</B><br align='left'/>(Conv2d)<br align='left'/>> labelloc=b penwidth=2.0 style="filled,dashed"
 					}
 				}
 			}
 		}
 	}
-	subgraph cluster_feedforward_pass1 {
-		subgraph "cluster_feedforward.classifier_pass1" {
-			subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6_pass1" {
-				subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6.rescale_pass1" {
-					subgraph "cluster_lrm.features_6_modulation.from_classifier_2_to_features_6.rescale.interp_pass1" {
-						fillcolor=white label=<<B>@lrm.features_6_modulation.from_classifier_2_to_features_6.rescale.interp</B><br align='left'/>(AddSpatialDimension)<br align='left'/>> labelloc=b penwidth=2.6 style="filled,solid"
-						unsqueeze_5_89 -> unsqueeze_6_90 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
-						unsqueeze_6_90 -> to_5_91 [arrowsize=.7 color=black fontcolor=black labelfontsize=8 style=solid]
+	subgraph cluster_backbone_pass1 {
+		subgraph "cluster_backbone.layer4_pass1" {
+			subgraph "cluster_backbone.layer4.0_pass1" {
+				subgraph "cluster_backbone.layer4.0.downsample_pass1" {
+					subgraph "cluster_backbone.layer4.0.downsample.1_pass1" {
+						fillcolor=white label=<<B>@backbone.layer4.0.downsample.1</B><br align='left'/>(BatchNorm2d)<br align='left'/>> labelloc=b penwidth=2.0 style="filled,dashed"
 					}
 				}
 			}
